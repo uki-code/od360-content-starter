@@ -31,8 +31,11 @@ CMI5 defines 3 core components:
   * records learner progress: submitted answers, in-progress AU state, completion
   * Implements XAPI
     * REST & JSON API
+    * Runtime component of CMI5 is a subset of XAPI (called a "profile")
   * In our case, this role is filled by LRSQL
-    * Developed by Yet Analytics: https://github.com/yetanalytics/lrsql
+    * https://github.com/yetanalytics/lrsql
+    * Licensed under Apache 2
+    * Developed by Yet Analytics
     * Operated by UKI
 3. Assignable Units (AUs)
   * Atomic unit of content in CMI5
@@ -46,12 +49,18 @@ CMI5 defines 3 core components:
     * Import process ingests course structure in `cmi5.xml`
       * Or CMI5 package zip file, which includes `cmi5.xml` at the root
     * Example course templates are available here: https://xapi.com/cmi5/example-course-templates/
-    * For browser-based content, we recommend using XAPI.js CMI5 Profile library
+    * For browser-based content, use the CMI5 Profile library from XAPI.js
       * https://www.xapijs.dev/cmi5-profile-library/introduction
       * This library manages most of the CMI5 lifecycle for an AU provider
 
+### CMI5 Content Lifecycle
+
 CMI5 defines 5 core events in the learner-content lifecycle. The spec requires each event to be recorded for each AU launch. This interaction is detailed here: https://aicc.github.io/CMI-5_Spec_Current/flows/au-flow.html
 
-A local CMI5 harness is available by running the reference implementation CATAPULT player, available and documented here: https://github.com/adlnet/CATAPULT/tree/main/player. This simulates the role of LMS, into which your content can be imported, and which will initiate the launch interaction with your content in the same way that OpenDash 360 will. At the link given you will find a Docker Compose configuration which will allow you to run the CATAPULT player locally.
+### CMI5 Content Development & Validation Harness
 
-In order to test content locally you will also need an LRS. We use an Open Source LRS called LRSQL. It ships with instructions for running it locally under Docker here: https://github.com/yetanalytics/lrsql/blob/main/doc/docker.md
+A local CMI5 harness is available by running the reference implementation CATAPULT player, available and documented here: https://github.com/adlnet/CATAPULT/tree/main/player. The CATAPULT project is provided under the Apache License, Version 2.0. At the link given you will find a Docker Compose configuration which will allow running the CATAPULT player locally.
+
+This component simulates the role of an LMS, into which content can be imported, and which will initiate the launch interaction with content in the same way that OpenDash 360 will.
+
+In order to test content locally an LRS is also required. We use an Open Source LRS called LRSQL. It ships with instructions for running it locally under Docker here: https://github.com/yetanalytics/lrsql/blob/main/doc/docker.md
